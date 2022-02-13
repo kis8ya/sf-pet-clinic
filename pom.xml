@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.github.kis8ya</groupId>
     <artifactId>sf-pet-clinic</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>sf-pet-clinic</name>
     <description>sf-pet-clinic</description>
     <properties>
@@ -23,7 +23,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/kis8ya/sf-pet-clinic.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>sf-pet-clinic-0.0.2</tag>
   </scm>
 
     <build>
@@ -46,6 +46,10 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <goals>install</goals>
+                    <checkModificationExcludes>
+                        <checkModificationExclude>pom.xml</checkModificationExclude>
+                    </checkModificationExcludes>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
         </plugins>
