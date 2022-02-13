@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.github.kis8ya</groupId>
     <artifactId>sf-pet-clinic</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>sf-pet-clinic</name>
     <description>sf-pet-clinic</description>
     <properties>
@@ -23,7 +23,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/kis8ya/sf-pet-clinic.git</developerConnection>
-      <tag>sf-pet-clinic-0.0.1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>
