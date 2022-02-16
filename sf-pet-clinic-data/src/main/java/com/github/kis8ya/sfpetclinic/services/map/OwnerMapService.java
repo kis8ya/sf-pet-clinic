@@ -2,7 +2,11 @@ package com.github.kis8ya.sfpetclinic.services.map;
 
 import com.github.kis8ya.sfpetclinic.model.Owner;
 import com.github.kis8ya.sfpetclinic.services.OwnerService;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
+@Profile("map")
+@Service
 public class OwnerMapService extends AbstractMapService<Owner> implements OwnerService {
 
     @Override
