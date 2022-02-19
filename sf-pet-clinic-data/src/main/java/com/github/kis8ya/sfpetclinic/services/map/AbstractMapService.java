@@ -2,10 +2,7 @@ package com.github.kis8ya.sfpetclinic.services.map;
 
 import com.github.kis8ya.sfpetclinic.model.BaseEntity;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public abstract class AbstractMapService<T extends BaseEntity> {
 
@@ -20,6 +17,7 @@ public abstract class AbstractMapService<T extends BaseEntity> {
     }
 
     public T save(T object) {
+        object.setId(new Random().nextLong());
         map.put(object.getId(), object);
         return object;
     }
