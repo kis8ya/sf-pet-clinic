@@ -17,7 +17,7 @@ public abstract class AbstractMapService<T extends BaseEntity> {
     }
 
     public T save(T object) {
-        object.setId(new Random().nextLong());
+        object.setId(new Random().nextLong(1, Long.MAX_VALUE));
         map.put(object.getId(), object);
         return object;
     }

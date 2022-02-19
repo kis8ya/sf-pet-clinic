@@ -5,13 +5,14 @@
     <title>List of Vets</title>
 </head>
 <body>
-<h1 th:text="'Homyaki'"></h1>
 <table>
     <tr>
+        <th>ID</th>
         <th>First Name</th>
         <th>Last Name</th>
     </tr>
     <tr th:each="vet : ${vets}">
+        <td th:text="${vet.getId()}">1</td>
         <td th:text="${vet.getFirstName()}">Name</td>
         <td th:text="${vet.getLastName()}">Lastname</td>
     </tr>

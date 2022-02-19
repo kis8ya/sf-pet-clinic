@@ -8,10 +8,12 @@
 
 <table>
     <tr>
+        <th>ID</th>
         <th>First Name</th>
         <th>Last Name</th>
     </tr>
     <tr th:each="owner : ${owners}">
+        <td th:text="${owner.getId()}">1</td>
         <td th:text="${owner.getFirstName()}">OwnerName</td>
         <td th:text="${owner.getLastName()}">OwnerLastName</td>
     </tr>
