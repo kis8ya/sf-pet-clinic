@@ -1,9 +1,17 @@
 package com.github.kis8ya.sfpetclinic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "specialities")
 public class Speciality extends BaseEntity {
 
     private String name;
     private String description;
+
+    public Speciality() {
+    }
 
     public Speciality(String name, String description) {
         this.name = name;

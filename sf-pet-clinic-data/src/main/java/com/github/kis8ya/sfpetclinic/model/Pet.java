@@ -1,13 +1,31 @@
 package com.github.kis8ya.sfpetclinic.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity {
 
+    @OneToOne
+    @JoinColumn(name = "type_id")
     private PetType type;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
     private Owner owner;
+
     private LocalDate birthDay;
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "pet_id")
+    @OrderBy("date ASC")
+    private Set<Visit> visits;
+
+    public Pet() {
+    }
 
     public Pet(PetType type, Owner owner, LocalDate birthDay, String name) {
         this.type = type;
@@ -48,4 +66,11 @@ public class Pet extends BaseEntity {
         this.name = name;
     }
 
+    public Set<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
+    }
 }
