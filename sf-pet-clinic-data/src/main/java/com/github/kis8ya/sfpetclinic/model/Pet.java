@@ -12,7 +12,7 @@ public class Pet extends BaseEntity {
     @JoinColumn(name = "type_id")
     private PetType type;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
