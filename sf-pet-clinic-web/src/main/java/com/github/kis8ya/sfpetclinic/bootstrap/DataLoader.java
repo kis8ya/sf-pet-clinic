@@ -1,10 +1,7 @@
 package com.github.kis8ya.sfpetclinic.bootstrap;
 
 import com.github.kis8ya.sfpetclinic.model.*;
-import com.github.kis8ya.sfpetclinic.services.OwnerService;
-import com.github.kis8ya.sfpetclinic.services.PetTypeService;
-import com.github.kis8ya.sfpetclinic.services.SpecialtiesService;
-import com.github.kis8ya.sfpetclinic.services.VetService;
+import com.github.kis8ya.sfpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -25,20 +22,36 @@ public class DataLoader  implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtiesService specialtiesService;
+    private final VisitService visitService;
 
     public DataLoader(
             OwnerService ownerService,
             VetService vetService,
             PetTypeService petTypeService,
-            SpecialtiesService specialtiesService) {
+            SpecialtiesService specialtiesService,
+            VisitService visitService
+    ) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtiesService = specialtiesService;
+        this.visitService = visitService;
     }
 
     private void log(String message) {
         System.out.println(logPrefix + message);
+    }
+
+    private <T> T randomFromSet(Set<T> items) {
+        int targetIndex = new Random().nextInt(items.size());
+        int i = 0;
+        for (T obj : items) {
+            if (i == targetIndex) {
+                return obj;
+            }
+            ++i;
+        }
+        return null;
     }
 
     private String randomString() {
@@ -151,9 +164,20 @@ public class DataLoader  implements CommandLineRunner {
             owner.setCity(ownerData[2]);
             owner.setAddress(ownerData[3]);
             owner.setTelephone(ownerData[4]);
-            owner.setPets(randomPets(petTypes, owner));
+            Set<Pet> pets = randomPets(petTypes, owner);
+            owner.setPets(pets);
             ownerService.save(owner);
+
+            Visit visit = new Visit();
+            visit.setDate(LocalDate.of(2022, 07, new Random().nextInt(20)));
+            visit.setDescription("Ordinary visit by " + ownerData[0]);
+            visit.setPet(randomFromSet(pets));
+            visitService.save(visit);
         }
+
+        visitService.findAll().forEach(
+                v -> System.out.println(v.getId() + ": Visit{description=" + v.getDescription() + "; pet=" + v.getPet().getName() + "}")
+        );
 
         String[][] vetsData = {
                 {"Psycho", "Cat"},
@@ -172,5 +196,7 @@ public class DataLoader  implements CommandLineRunner {
                 log("  " + spec.getName());
             }
         }
+
+
     }
 }
