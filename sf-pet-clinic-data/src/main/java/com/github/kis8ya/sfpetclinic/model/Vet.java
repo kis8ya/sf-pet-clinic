@@ -1,8 +1,15 @@
 package com.github.kis8ya.sfpetclinic.model;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@Setter
+@Getter
+@RequiredArgsConstructor
 @Entity
 @Table(name = "vets")
 public class Vet extends Person {
@@ -14,13 +21,5 @@ public class Vet extends Person {
             inverseJoinColumns = @JoinColumn(name = "specialty_id")
     )
     private Set<Speciality> specialities;
-
-    public Set<Speciality> getSpecialities() {
-        return specialities;
-    }
-
-    public void setSpecialities(Set<Speciality> specialities) {
-        this.specialities = specialities;
-    }
 
 }
