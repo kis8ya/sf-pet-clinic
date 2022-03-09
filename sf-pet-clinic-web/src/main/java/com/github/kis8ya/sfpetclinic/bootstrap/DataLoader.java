@@ -78,7 +78,7 @@ public class DataLoader  implements CommandLineRunner {
     private Set<Pet> randomPets(Set<PetType> petTypes, Owner owner) {
         int petTypesSize = petTypes.size();
         Set<Pet> result = new HashSet<>();
-        for (int petsCount = randomFromRange(MAX_PETS, MIN_PETS); petsCount > 0; --petsCount) {
+        for (int petsCount = randomFromRange(MIN_PETS, MAX_PETS); petsCount > 0; --petsCount) {
             PetType type = null;
             int typeIndex = new Random().nextInt(petTypesSize);
             int i = 0;
@@ -98,7 +98,7 @@ public class DataLoader  implements CommandLineRunner {
         int specialtiesSize = specialities.size();
         final int MIN_SPECIALTIES = 1;
         Set<Speciality> result = new HashSet<>();
-        for (int specialtyCount = randomFromRange(specialtiesSize, MIN_SPECIALTIES);
+        for (int specialtyCount = randomFromRange(MIN_SPECIALTIES, specialtiesSize);
              specialtyCount > 0;
              --specialtyCount) {
             Speciality speciality = null;
@@ -169,7 +169,7 @@ public class DataLoader  implements CommandLineRunner {
             ownerService.save(owner);
 
             Visit visit = new Visit();
-            visit.setDate(LocalDate.of(2022, 07, new Random().nextInt(20)));
+            visit.setDate(LocalDate.of(2022, 1, new Random().nextInt(20)));
             visit.setDescription("Ordinary visit by " + ownerData[0]);
             visit.setPet(randomFromSet(pets));
             visitService.save(visit);
