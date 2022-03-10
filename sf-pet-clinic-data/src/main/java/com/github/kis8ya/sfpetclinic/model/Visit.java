@@ -1,7 +1,7 @@
 package com.github.kis8ya.sfpetclinic.model;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "visits")
 public class Visit extends BaseEntity {

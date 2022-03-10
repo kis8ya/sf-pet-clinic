@@ -158,12 +158,12 @@ public class DataLoader  implements CommandLineRunner {
                 {"Hater", "Cat", "Miami", "hit", "1"}
         };
         for (String[] ownerData : ownersData) {
-            Owner owner = new Owner();
-            owner.setFirstName(ownerData[0]);
-            owner.setLastName(ownerData[1]);
-            owner.setCity(ownerData[2]);
-            owner.setAddress(ownerData[3]);
-            owner.setTelephone(ownerData[4]);
+            Owner owner = Owner.builder()
+                    .firstName(ownerData[0])
+                    .lastName(ownerData[1])
+                    .city(ownerData[2])
+                    .address(ownerData[3])
+                    .telephone(ownerData[4]).build();
             Set<Pet> pets = randomPets(petTypes, owner);
             owner.setPets(pets);
             ownerService.save(owner);

@@ -1,7 +1,7 @@
 package com.github.kis8ya.sfpetclinic.model;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "vets")
 public class Vet extends Person {
