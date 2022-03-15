@@ -73,6 +73,11 @@
         </dependency>
         <dependency>
             <groupId>org.webjars.npm</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
             <artifactId>font-awesome</artifactId>
             <version>${webjars-font-awesome.version}</version>
         </dependency>
@@ -152,6 +157,11 @@
                                             <groupId>org.webjars.npm</groupId>
                                             <artifactId>bootstrap</artifactId>
                                             <version>${webjars-bootstrap.version}</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.webjars.npm</groupId>
+                                            <artifactId>jquery</artifactId>
+                                            <version>3.6.0</version>
                                         </artifactItem>
                                     </artifactItems>
                                     <outputDirectory>${project.build.directory}/webjars</outputDirectory>

@@ -66,7 +66,7 @@ public class DataLoader  implements CommandLineRunner {
 
     private LocalDate randomDate() {
         long minDay = LocalDate.of(1980, 1, 1).toEpochDay();
-        long maxDay = LocalDate.of(2022, 1, 31).toEpochDay();
+        long maxDay = LocalDate.of(2022, 1, 20).toEpochDay();
         long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
         return LocalDate.ofEpochDay(randomDay);
     }
@@ -169,7 +169,7 @@ public class DataLoader  implements CommandLineRunner {
             ownerService.save(owner);
 
             Visit visit = new Visit();
-            visit.setDate(LocalDate.of(2022, 1, new Random().nextInt(20)));
+            visit.setDate(LocalDate.of(2022, 1, new Random().nextInt(20) + 1));
             visit.setDescription("Ordinary visit by " + ownerData[0]);
             visit.setPet(randomFromSet(pets));
             visitService.save(visit);
